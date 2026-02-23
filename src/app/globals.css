@@ -1,26 +1,342 @@
 @import "tailwindcss";
 
+@theme {
+  --color-bookim-primary: #2D4057;
+  --color-bookim-primary-light: #4A5F7A;
+  --color-bookim-bg-primary: #FFFFFF;
+  --color-bookim-bg-secondary: #F8F9FA;
+  --color-bookim-text-primary: #000000;
+  --color-bookim-text-secondary: #666666;
+  --color-bookim-border: #E5E5E5;
+
+  /* Animations as theme tokens */
+  --animate-marquee: marquee 35s linear infinite;
+  --animate-marquee2: marquee2 35s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-glow: pulse-glow 3s ease-in-out infinite;
+  --animate-shimmer: shimmer 2.5s ease-in-out infinite;
+  --animate-gradient-shift: gradient-shift 8s ease infinite;
+  --animate-draw-line: draw-line 1.5s ease-out forwards;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  /* Light Theme (Apple/Clean Style) */
+  --bookim-bg-primary: #FFFFFF;
+  --bookim-bg-secondary: #F8F9FA;
+  --bookim-bg-tertiary: #F0F0F5;
+  --bookim-text-primary: #1D1D1F;
+  --bookim-text-secondary: #86868B;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --bookim-primary: #2D4057;
+  --bookim-primary-light: #4A5F7A;
+  --bookim-warning: #FFD700;
+  --bookim-border: #E5E5E5;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --bookim-primary-dark: #4834D4;
+  --bookim-accent: #00D2D3;
+  --bookim-accent-light: #7EFFF5;
+  --bookim-success: #00B894;
+  --bookim-danger: #FF6B6B;
+  --bookim-text-muted: #A1A1A6;
+
+  /* Gradients */
+  --bookim-gradient-hero: linear-gradient(135deg, #1D1D1F 0%, #48484A 100%);
+  --bookim-gradient-cta: linear-gradient(135deg, #6C5CE7 0%, #4834D4 100%);
+  --bookim-gradient-card: linear-gradient(180deg, #FFFFFF 0%, #FAFAFA 100%);
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.12);
+  --shadow-glow: 0 0 40px rgba(45, 64, 87, 0.15);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* Branco com glow ambiente — fundo premium tipo Apple/Linear */
+  background-color: #FFFFFF;
+  background-image:
+    radial-gradient(ellipse 90% 55% at 50% -5%, rgba(45, 64, 87, 0.13) 0%, rgba(45, 64, 87, 0.04) 45%, transparent 65%),
+    radial-gradient(ellipse 55% 40% at 98% 8%, rgba(74, 95, 122, 0.09) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 35% at 2% 10%, rgba(45, 64, 87, 0.07) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 50% 105%, rgba(45, 64, 87, 0.05) 0%, transparent 60%);
+  background-attachment: fixed;
+  color: var(--bookim-text-primary);
+  font-family: var(--font-inter), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ═══════════════════════════════════════
+   KEYFRAME ANIMATIONS
+   ═══════════════════════════════════════ */
+
+/* Marquee — SocialProof infinite scroll */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee2 {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Marquee single-track — Testimonials infinite scroll */
+@keyframes marquee-slide {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Float — MockupPhone gentle hovering */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* Pulse Glow — CTA button shimmer */
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(45, 64, 87, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 40px rgba(45, 64, 87, 0.4), 0 0 80px rgba(45, 64, 87, 0.1);
+  }
+}
+
+/* Shimmer — Badge shine effect */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Gradient Shift — Animated background for CTA */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Draw Line — Timeline connector */
+@keyframes draw-line {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+/* Fade In Up — Intersection observer helper */
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide In from Top — Mobile menu */
+@keyframes slide-in-from-top {
+  0% {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ═══════════════════════════════════════
+   UTILITY CLASSES
+   ═══════════════════════════════════════ */
+
+@layer utilities {
+  .text-gradient {
+    background: var(--bookim-gradient-hero);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass-nav {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(24px) saturate(200%);
+    border-bottom: 1px solid rgba(45, 64, 87, 0.06);
+  }
+
+  /* Glow section helper */
+  .section-glow {
+    background: transparent;
+  }
+
+  /* Marquee fade edges */
+  .marquee-mask {
+    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  }
+
+  /* Animated gradient background */
+  .animated-gradient-bg {
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  /* Card hover lift */
+  .card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(45, 64, 87, 0.12);
+  }
+
+  /* Glow ring on hover */
+  .glow-ring:hover {
+    box-shadow: 0 0 0 4px rgba(45, 64, 87, 0.08), 0 8px 25px rgba(45, 64, 87, 0.12);
+  }
+
+  /* Slide-in animation for mobile menu */
+  .animate-slide-in-top {
+    animation: slide-in-from-top 0.3s ease-out forwards;
+  }
+
+  /* Pulse glow utility for buttons */
+  .btn-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+}
+
+/* ─── Rainbow Button (MagicUI-inspired) ─── */
+@property --rainbow-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rainbow-rotate {
+  to {
+    --rainbow-angle: 360deg;
+  }
+}
+
+.rainbow-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+  border-radius: 9999px;
+  background: conic-gradient(from var(--rainbow-angle),
+      #FF6B6B,
+      #FFA07A,
+      #FFD700,
+      #98FB98,
+      #87CEEB,
+      #9B59B6,
+      #FF6B6B);
+  animation: rainbow-rotate 3s linear infinite;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.rainbow-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.rainbow-btn:active {
+  transform: translateY(0);
+}
+
+.rainbow-btn::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  background: conic-gradient(from var(--rainbow-angle),
+      #FF6B6B,
+      #FFA07A,
+      #FFD700,
+      #98FB98,
+      #87CEEB,
+      #9B59B6,
+      #FF6B6B);
+  animation: rainbow-rotate 3s linear infinite;
+  opacity: 0;
+  filter: blur(12px);
+  transition: opacity 0.3s;
+  z-index: -1;
+}
+
+.rainbow-btn:hover::before {
+  opacity: 0.6;
+}
+
+.rainbow-btn-inner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 36px;
+  border-radius: 9999px;
+  background: #1D1D1F;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+/* Reduced motion — accessibility */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

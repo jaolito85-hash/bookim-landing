@@ -1,0 +1,25 @@
+services:
+
+  # Landing Page — bookim.com.br (ou seu domínio)
+  landing:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+
+  # App Bookim — app.bookim.com.br (subdomínio)
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+      args:
+        VITE_SUPABASE_URL: ${VITE_SUPABASE_URL}
+        VITE_SUPABASE_PUBLISHABLE_KEY: ${VITE_SUPABASE_PUBLISHABLE_KEY}
+        VITE_SUPABASE_PROJECT_ID: ${VITE_SUPABASE_PROJECT_ID}
+    ports:
+      - "8080:80"
+    restart: unless-stopped

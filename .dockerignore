@@ -1,0 +1,11 @@
+node_modules
+.next
+.git
+.claude
+app/
+*.log
+.env*
+README.md
+DIRETIVA_BOOKIM_SITE.md
+build_output.txt
+lint_output.txt

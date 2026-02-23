@@ -39,3 +39,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# app subproject (Vite/React — tem seu próprio repo, ignorado aqui)
+app/
+
+# log files gerados localmente
+build_output.txt
+lint_output.txt
+
+# Claude Code internal
+.claude/
