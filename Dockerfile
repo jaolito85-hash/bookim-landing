@@ -1,7 +1,7 @@
 # ─────────────────────────────────────────────
 #  Bookim — Landing Page (Next.js)
 #  Build: docker build -t bookim-landing .
-#  Run:   docker run -p 3000:3000 bookim-landing
+#  Run:   docker run -p 80:80 bookim-landing
 # ─────────────────────────────────────────────
 
 # Etapa 1 — Dependências
@@ -22,7 +22,7 @@ FROM node:20-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
-ENV PORT=3000
+ENV PORT=80
 ENV HOSTNAME="0.0.0.0"
 
 # Usuário não-root para segurança
@@ -36,6 +36,6 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 USER nextjs
-EXPOSE 3000
+EXPOSE 80
 
 CMD ["node", "server.js"]
