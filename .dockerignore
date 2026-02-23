@@ -3,6 +3,9 @@ node_modules
 .git
 .claude
 app/
+pages/
+_app_old_vite/
+_pages_old/
 *.log
 .env*
 README.md
