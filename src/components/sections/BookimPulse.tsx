@@ -285,7 +285,7 @@ export function BookimPulse() {
                     transition={{ delay: 0.4 }}
                     className="text-center"
                 >
-                    <div className="inline-flex flex-col items-center p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/[0.08]">
+                    <div className="flex flex-col items-center p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/[0.08] w-full sm:w-auto">
                         <div className="flex items-baseline gap-1 mb-2">
                             <span className="text-4xl sm:text-5xl font-bold text-white">R$67</span>
                             <span className="text-gray-500 text-lg">/mês</span>

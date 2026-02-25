@@ -329,6 +329,16 @@ body {
   white-space: nowrap;
 }
 
+@media (max-width: 640px) {
+  .rainbow-btn-inner {
+    white-space: normal;
+    height: auto;
+    padding: 12px 24px;
+    text-align: center;
+    line-height: 1.4;
+  }
+}
+
 /* Reduced motion — accessibility */
 @media (prefers-reduced-motion: reduce) {
 
