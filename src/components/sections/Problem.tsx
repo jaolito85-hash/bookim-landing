@@ -50,7 +50,7 @@ export function Problem() {
                         transition={{ delay: 0.1 }}
                         className="text-base sm:text-lg text-[var(--bookim-text-secondary)] max-w-2xl mx-auto px-4"
                     >
-                        Estudar medicina é difícil. Estudar errado torna impossível.
+                        Estudar medicina ou odontologia é difícil. Estudar errado torna impossível.
                     </motion.p>
                 </div>
 

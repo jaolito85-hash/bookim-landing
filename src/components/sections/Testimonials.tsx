@@ -86,6 +86,22 @@ const testimonials = [
         color: "#0284C7",
         rating: 5,
     },
+    {
+        quote: "Estava perdida em Periodontia. Fotografei minhas notas, o Bookim organizou tudo por temas e em uma semana estava bem mais confiante para a prova.",
+        author: "Mariana Souza",
+        role: "4º período Odontologia · USP Bauru",
+        initials: "MS",
+        color: "#0891B2",
+        rating: 5,
+    },
+    {
+        quote: "O Bookim entende o contexto clínico da odontologia. Os flashcards gerados para Cirurgia Oral e Prótese são melhores do que qualquer resumo que eu faria.",
+        author: "Pedro Henrique",
+        role: "6º período Odontologia · UFMG",
+        initials: "PH",
+        color: "#0D9488",
+        rating: 5,
+    },
 ]
 
 // Duplicate for seamless loop — both rows use different halves for visual variety
@@ -148,7 +164,7 @@ export function Testimonials() {
                         Quem usa, aprova.
                     </h2>
                     <p className="text-base sm:text-lg text-[var(--bookim-text-secondary)] max-w-sm mx-auto leading-relaxed">
-                        Estudantes de medicina de todo o Brasil já transformaram sua rotina.
+                        Estudantes de medicina e odontologia de todo o Brasil já transformaram sua rotina.
                     </p>
                 </motion.div>
             </Container>

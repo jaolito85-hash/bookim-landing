@@ -22,7 +22,7 @@ export function Footer() {
                             />
                         </Link>
                         <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                            A revolução do estudo médico com inteligência artificial e neurociência aplicada.
+                            A revolução do estudo na área da saúde com inteligência artificial e neurociência aplicada.
                         </p>
                         <div className="flex space-x-4">
                             <a href="#" className="text-gray-500 hover:text-white transition-colors"><Instagram className="w-5 h-5" /></a>
@@ -58,7 +58,7 @@ export function Footer() {
 
                 <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
                     <p>© 2026 Bookim. Todos os direitos reservados.</p>
-                    <p className="mt-4 md:mt-0">Feito com 💜 para estudantes de medicina.</p>
+                    <p className="mt-4 md:mt-0">Feito com 💜 para medicina e odontologia.</p>
                 </div>
             </Container>
         </footer>

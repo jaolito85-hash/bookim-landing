@@ -29,10 +29,10 @@ const newsItems = [
     },
     {
         time: "07:12",
-        tag: "ECG",
-        tagColor: "text-amber-400 bg-amber-400/10",
-        title: "Algoritmo de ECG prevê insuficiência cardíaca 5 anos antes dos sintomas",
-        source: "JAMA Cardiology",
+        tag: "Odontologia",
+        tagColor: "text-teal-400 bg-teal-400/10",
+        title: "IA identifica cárie incipiente em radiografias com 97% de precisão, superando diagnóstico convencional",
+        source: "Journal of Dental Research",
     },
 ]
 
@@ -51,7 +51,7 @@ const highlights = [
     },
     {
         icon: Stethoscope,
-        title: "Para estudante de medicina",
+        title: "Para medicina e odontologia",
         description: "Conteúdo filtrado para quem está construindo carreira na saúde.",
         gradient: "from-purple-500 to-violet-500",
     },
@@ -111,20 +111,20 @@ export function BookimPulse() {
                 >
                     <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight mb-6">
                         Acorde com o futuro da <br className="hidden sm:block" />
-                        medicina na sua tela.
+                        saúde na sua tela.
                     </h2>
                     <div className="space-y-5 text-base sm:text-lg text-gray-400 leading-relaxed">
                         <p>
-                            Todo dia, às <span className="text-white font-semibold">7h da manhã</span>, você acorda sabendo o que a medicina está descobrindo.
+                            Todo dia, às <span className="text-white font-semibold">7h da manhã</span>, você acorda sabendo o que a saúde está descobrindo.
                         </p>
                         <p>
-                            O Bookim Pulse é uma newsletter exclusiva dentro do app. Todos os dias, chegam as notícias mais relevantes sobre IA e medicina no mundo — curadas e resumidas para o estudante brasileiro.
+                            O Bookim Pulse é uma newsletter exclusiva dentro do app. Todos os dias, chegam as notícias mais relevantes sobre IA e saúde no mundo — curadas e resumidas para o estudante brasileiro.
                         </p>
                         <p>
-                            Diagnóstico por IA. Cirurgias robóticas. Novas descobertas em cardiologia. O futuro da medicina chegando primeiro pra você.
+                            Diagnóstico por IA. Inovações em odontologia. Novas descobertas na área da saúde. O futuro chegando primeiro pra você.
                         </p>
                         <p className="italic text-gray-500 pt-2">
-                            Porque o médico do futuro não pode estudar só o passado.
+                            Porque o profissional de saúde do futuro não pode estudar só o passado.
                         </p>
                     </div>
                 </motion.div>
@@ -229,10 +229,10 @@ export function BookimPulse() {
 
                                         <div className="p-3.5 rounded-xl bg-white/[0.06] border border-white/[0.08]">
                                             <div className="flex items-center gap-2 mb-1.5">
-                                                <span className="text-[9px] font-bold text-purple-400 bg-purple-400/10 px-1.5 py-0.5 rounded-full uppercase">Cirurgia</span>
+                                                <span className="text-[9px] font-bold text-teal-400 bg-teal-400/10 px-1.5 py-0.5 rounded-full uppercase">Odonto</span>
                                             </div>
-                                            <p className="text-white text-xs leading-snug font-medium">Robô realiza cirurgia sem intervenção humana</p>
-                                            <p className="text-gray-600 text-[10px] mt-1">Science Robotics</p>
+                                            <p className="text-white text-xs leading-snug font-medium">IA detecta cárie com 97% de precisão em radiografias</p>
+                                            <p className="text-gray-600 text-[10px] mt-1">J. Dental Research</p>
                                         </div>
                                     </div>
 

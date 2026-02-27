@@ -5,8 +5,8 @@ import { Accordion } from "@/components/ui/Accordion"
 
 const faqItems = [
     {
-        title: "O Bookim funciona para outras áreas além de medicina?",
-        content: "Nosso foco principal e otimizações de IA são para medicina, mas a tecnologia de flashcards e repetição espaçada funciona para qualquer conteúdo de estudo intenso."
+        title: "O Bookim funciona para farmácia ou outras áreas da saúde?",
+        content: "O Bookim tem agentes de IA especializados para medicina e odontologia. Para outras áreas da saúde, a tecnologia de flashcards e repetição espaçada funciona muito bem, mas as otimizações específicas de IA são focadas nesses dois cursos."
     },
     {
         title: "Preciso de internet para usar?",

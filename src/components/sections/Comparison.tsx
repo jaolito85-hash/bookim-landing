@@ -32,7 +32,7 @@ const features = [
         bookim: "Dashboard completo e gratuito",
     },
     {
-        label: "Foco em medicina",
+        label: "Foco em medicina e odontologia",
         traditional: "App genérico para tudo",
         bookim: "100% especializado para área da saúde",
     },

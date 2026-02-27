@@ -33,7 +33,7 @@ export function CTA() {
                         <span className="text-[var(--bookim-primary-light)]">começa aqui.</span>
                     </h2>
                     <p className="text-base sm:text-lg md:text-xl text-gray-400 mb-10 md:mb-12 max-w-2xl mx-auto leading-relaxed">
-                        Junte-se a milhares de estudantes de medicina que já mudaram a forma de estudar e retêm mais conteúdo com menos stress.
+                        Junte-se a milhares de estudantes de medicina e odontologia que já mudaram a forma de estudar e retêm mais conteúdo com menos stress.
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-12 md:mb-16">

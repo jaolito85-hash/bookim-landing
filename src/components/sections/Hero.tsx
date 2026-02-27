@@ -57,7 +57,7 @@ export function Hero() {
                 >
                     <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-[#2D4057]/8 border border-[#2D4057]/10 text-[var(--bookim-text-secondary)] font-medium text-sm tracking-wide">
                         <Sparkles className="w-4 h-4 text-[var(--bookim-warning)]" />
-                        <span>O futuro do estudo médico</span>
+                        <span>Para medicina e odontologia</span>
                     </div>
                 </motion.div>
 
@@ -68,8 +68,8 @@ export function Hero() {
                     transition={{ duration: 0.55, delay: 0.2 }}
                     className="text-[2rem] sm:text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tighter leading-[1.08] mb-6 max-w-4xl text-[var(--bookim-text-primary)] font-outfit px-2"
                 >
-                    Medicina é difícil. <br />
-                    <span className="text-[var(--bookim-primary)]">Estudar não precisa ser.</span>
+                    Medicina. Odontologia. <br />
+                    <span className="text-[var(--bookim-primary)]">Estudar não precisa ser difícil.</span>
                 </motion.h1>
 
                 {/* Subheadline */}
@@ -79,7 +79,7 @@ export function Hero() {
                     transition={{ duration: 0.5, delay: 0.3 }}
                     className="text-base sm:text-lg md:text-xl text-[var(--bookim-text-secondary)] max-w-2xl mb-10 leading-relaxed font-medium px-4"
                 >
-                    Por que estudantes da USP, UFRJ e UFMG estão todos usando o mesmo app? O Bookim é o único app com IA especializada em medicina do mundo — por menos que uma pizza por mês.
+                    Por que estudantes da USP, UFRJ e UFMG estão todos usando o mesmo app? O Bookim é o único app com IA especializada para cada curso — um agente treinado para entender as maiores dúvidas e desafios de medicina e odontologia.
                 </motion.p>
 
                 {/* CTAs */}
@@ -151,9 +151,9 @@ export function Hero() {
                                         <div className="ml-auto text-xs font-semibold text-blue-600 bg-blue-50 px-2 py-1 rounded-full">Em dia</div>
                                     </div>
                                     <div className="p-4 rounded-2xl bg-[#F5F5F7] flex items-center space-x-3 transition-transform hover:scale-[1.02]">
-                                        <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-xl flex-shrink-0">🫀</div>
+                                        <div className="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center text-xl flex-shrink-0">🦷</div>
                                         <div className="min-w-0">
-                                            <div className="font-bold text-sm">Cardiologia</div>
+                                            <div className="font-bold text-sm">Periodontia</div>
                                             <div className="text-xs text-gray-500">8 novos flashcards</div>
                                         </div>
                                         <div className="ml-auto text-xs font-semibold text-orange-600 bg-orange-50 px-2 py-1 rounded-full">Novo</div>
