@@ -57,13 +57,8 @@ export function CTA() {
                     </div>
 
                     <div className="flex flex-col items-center space-y-2">
-                        <div className="flex space-x-1 text-[var(--bookim-warning)]">
-                            {[1, 2, 3, 4, 5].map((i) => (
-                                <Star key={i} className="w-4 sm:w-5 h-4 sm:h-5 fill-current" />
-                            ))}
-                        </div>
-                        <div className="text-sm sm:text-base text-gray-400 font-medium">
-                            <span className="text-white font-bold">4.9</span> (500+ avaliações)
+                        <div className="text-sm sm:text-base text-gray-400 font-medium text-center">
+                            <span className="text-white font-bold">7 dias</span> para testar — devolve se não gostar
                         </div>
                     </div>
                 </motion.div>

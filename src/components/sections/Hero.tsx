@@ -172,9 +172,9 @@ export function Hero() {
                     className="mt-16 grid grid-cols-3 gap-4 sm:gap-12 max-w-lg mx-auto px-2"
                 >
                     {[
-                        { icon: Download, value: "20M+", label: "Flashcards revisados" },
-                        { icon: Users, value: "5.000+", label: "Estudantes ativos" },
-                        { icon: GraduationCap, value: "92%", label: "Taxa de retenção" },
+                        { icon: Download, value: "IA", label: "Foto → Flashcard" },
+                        { icon: Users, value: "SM-2", label: "Repetição espaçada" },
+                        { icon: GraduationCap, value: "🩺", label: "Medicina & Odonto" },
                     ].map((stat, i) => (
                         <motion.div
                             key={stat.label}

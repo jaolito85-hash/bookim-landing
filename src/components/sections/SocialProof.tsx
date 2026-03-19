@@ -10,9 +10,9 @@ const universities = [
 ]
 
 const stats = [
-    { icon: BookOpen, value: "5.000+", label: "Flashcards criados" },
-    { icon: TrendingUp, value: "92%", label: "Retenção média" },
-    { icon: Zap, value: "4.9 ★", label: "Avaliação no app" },
+    { icon: BookOpen, value: "IA", label: "Flashcards automáticos" },
+    { icon: TrendingUp, value: "SM-2", label: "Repetição inteligente" },
+    { icon: Zap, value: "Real", label: "Feito para saúde" },
 ]
 
 export function SocialProof() {
