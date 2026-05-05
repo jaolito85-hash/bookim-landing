@@ -11,6 +11,38 @@ function escapeCsv(value: unknown): string {
   return str
 }
 
+/**
+ * Format a Brazilian WhatsApp number from a digits-only string like
+ * "5511991234567" to "+55 (11) 99123-4567".
+ * Excel won't auto-convert because of the parens/dash.
+ */
+function formatWhatsApp(raw: unknown): string {
+  if (raw === null || raw === undefined) return ""
+  const digits = String(raw).replace(/\D/g, "")
+  // Mobile: 13 digits (55 + DDD + 9XXXXXXXX)
+  if (digits.length === 13 && digits.startsWith("55")) {
+    return `+55 (${digits.slice(2, 4)}) ${digits.slice(4, 9)}-${digits.slice(9)}`
+  }
+  // Landline: 12 digits (55 + DDD + XXXXXXXX)
+  if (digits.length === 12 && digits.startsWith("55")) {
+    return `+55 (${digits.slice(2, 4)}) ${digits.slice(4, 8)}-${digits.slice(8)}`
+  }
+  // Fallback: prefix with apostrophe so Excel keeps as text
+  return `'${digits}`
+}
+
+/**
+ * Format ISO timestamp to Brazilian "DD/MM/YYYY HH:MM" so Excel doesn't
+ * mangle it into a US-formatted date.
+ */
+function formatDateBR(raw: unknown): string {
+  if (!raw) return ""
+  const d = new Date(String(raw))
+  if (Number.isNaN(d.getTime())) return String(raw)
+  const pad = (n: number) => n.toString().padStart(2, "0")
+  return `${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()} ${pad(d.getHours())}:${pad(d.getMinutes())}`
+}
+
 export async function GET() {
   if (!(await isAdminAuthenticated())) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
@@ -24,25 +56,32 @@ export async function GET() {
       return NextResponse.json({ error: "Database error" }, { status: 500 })
     }
 
-    // CSV column order (header row uses friendly names, but we read from
-    // the SQL function fields including `lead_position` which we expose
-    // as `position` in the CSV).
-    const fieldMap: Array<[string, string]> = [
+    // CSV column definition: source field, header label, and optional formatter.
+    type ColDef = [string, string, ((v: unknown) => string)?]
+    const columns: ColDef[] = [
       ["lead_position", "position"],
       ["nome", "nome"],
       ["email", "email"],
-      ["whatsapp", "whatsapp"],
+      ["whatsapp", "whatsapp", formatWhatsApp],
       ["area_de_estudo", "area_de_estudo"],
       ["utm_source", "utm_source"],
       ["utm_medium", "utm_medium"],
       ["utm_campaign", "utm_campaign"],
       ["utm_content", "utm_content"],
-      ["created_at", "created_at"],
+      ["created_at", "created_at", formatDateBR],
     ]
 
-    const rows: string[] = [fieldMap.map(([, label]) => label).join(",")]
+    const rows: string[] = [columns.map(([, label]) => label).join(",")]
     for (const row of (data as Record<string, unknown>[]) || []) {
-      rows.push(fieldMap.map(([key]) => escapeCsv(row[key])).join(","))
+      rows.push(
+        columns
+          .map(([key, , formatter]) => {
+            const raw = row[key]
+            const value = formatter ? formatter(raw) : raw
+            return escapeCsv(value)
+          })
+          .join(",")
+      )
     }
 
     const csv = "﻿" + rows.join("\n") // BOM for Excel UTF-8 compatibility
