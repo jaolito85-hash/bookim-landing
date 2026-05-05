@@ -146,9 +146,23 @@ www.bookim.com.br`
       { name: "is_founder", value: isFounder ? "yes" : "no" },
     ],
     html: `
-      <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 520px; margin: 0 auto; padding: 32px 24px; color: #1D1D1F;">
+      <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 520px; margin: 0 auto; padding: 32px 24px; color: #1D1D1F; background: #FFFFFF;">
+        <!-- Logo header -->
+        <div style="text-align: center; margin-bottom: 24px;">
+          <img
+            src="https://www.bookim.com.br/api/email-logo"
+            alt="Bookim"
+            width="64"
+            height="64"
+            style="display: inline-block; width: 64px; height: 64px; border-radius: 14px;"
+          />
+          <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 20px; font-weight: 700; color: #2D4057; margin-top: 12px; letter-spacing: -0.02em;">
+            Bookim
+          </div>
+        </div>
+
         <div style="text-align: center; margin-bottom: 32px;">
-          <h1 style="font-size: 24px; font-weight: 700; margin: 0 0 8px;">Você está na lista!</h1>
+          <h1 style="font-size: 24px; font-weight: 700; margin: 0 0 8px; color: #1D1D1F;">Você está na lista!</h1>
           <p style="color: #86868B; font-size: 15px; margin: 0;">Obrigado por se inscrever, ${params.name}.</p>
         </div>
 
