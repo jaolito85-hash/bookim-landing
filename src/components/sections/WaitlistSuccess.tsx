@@ -15,10 +15,10 @@ export function WaitlistSuccess({ position, totalCount, nome }: WaitlistSuccessP
   const isFounder = position <= 1000
 
   const shareText = encodeURIComponent(
-    "Acabei de entrar na lista de espera do Bookim, um app de estudos com IA pra medicina e odonto! Entra também: https://bookim.com.br/lista-de-espera?utm_source=whatsapp&utm_medium=referral&utm_campaign=waitlist-share"
+    "Acabei de entrar na lista de espera do Bookim, um app de estudos com IA pra medicina e odonto! Entra também: https://www.bookim.com.br/lista-de-espera?utm_source=whatsapp&utm_medium=referral&utm_campaign=waitlist-share"
   )
   const whatsappLink = `https://wa.me/?text=${shareText}`
-  const waitlistLink = "https://bookim.com.br/lista-de-espera?utm_source=referral&utm_medium=copy-link&utm_campaign=waitlist-share"
+  const waitlistLink = "https://www.bookim.com.br/lista-de-espera?utm_source=referral&utm_medium=copy-link&utm_campaign=waitlist-share"
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(waitlistLink)

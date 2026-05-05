@@ -38,7 +38,7 @@ export async function sendWelcomeEmail(params: {
         </div>
 
         <div style="text-align: center; margin-bottom: 24px;">
-          <a href="https://bookim.com.br" style="display: inline-block; background: #2D4057; color: white; padding: 14px 32px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 15px;">
+          <a href="https://www.bookim.com.br" style="display: inline-block; background: #2D4057; color: white; padding: 14px 32px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 15px;">
             Acessar o Bookim
           </a>
         </div>
@@ -105,7 +105,7 @@ export async function sendWaitlistConfirmationEmail(params: {
     : ""
 
   const shareText = encodeURIComponent(
-    "Acabei de entrar na lista de espera do Bookim, um app de estudos com IA pra medicina e odonto! Entra também: https://bookim.com.br/lista-de-espera?utm_source=whatsapp&utm_medium=referral&utm_campaign=waitlist-share"
+    "Acabei de entrar na lista de espera do Bookim, um app de estudos com IA pra medicina e odonto! Entra também: https://www.bookim.com.br/lista-de-espera?utm_source=whatsapp&utm_medium=referral&utm_campaign=waitlist-share"
   )
 
   const { data, error } = await getResend().emails.send({

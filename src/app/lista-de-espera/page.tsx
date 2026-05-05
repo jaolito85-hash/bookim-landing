@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "Bookim — Entre na lista de espera",
     description:
       "App de estudos com IA para medicina e odontologia. Os primeiros 1000 viram fundadores e congelam o preço!",
-    url: "https://bookim.com.br/lista-de-espera",
+    url: "https://www.bookim.com.br/lista-de-espera",
     siteName: "Bookim",
     type: "website",
   },
