@@ -74,30 +74,16 @@ export function BookimPulse() {
             </div>
 
             <Container className="relative z-10">
-                {/* Badge de urgência */}
+                {/* Badge */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     className="text-center mb-6"
                 >
-                    <div className="inline-flex flex-col items-center">
-                        <div className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-full bg-red-950/60 border border-red-500/25 text-red-400 font-bold text-xs tracking-wider uppercase animate-pulse-glow">
-                            <span>🔴</span>
-                            <span>Acesso Limitado · 67/100 Vagas</span>
-                        </div>
-                        {/* Barra de progresso */}
-                        <div className="w-64 sm:w-72 mt-4">
-                            <div className="w-full h-1.5 rounded-full bg-white/[0.06] overflow-hidden">
-                                <div
-                                    className="h-full rounded-full bg-gradient-to-r from-red-500 to-orange-400"
-                                    style={{ width: '67%' }}
-                                />
-                            </div>
-                            <p className="text-gray-500 text-[11px] mt-2 leading-snug">
-                                Quando as 100 vagas encerrarem, o Bookim Pulse será pago à parte.
-                            </p>
-                        </div>
+                    <div className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-full bg-indigo-950/60 border border-indigo-500/25 text-indigo-300 font-bold text-xs tracking-wider uppercase">
+                        <Sparkles className="w-3.5 h-3.5" />
+                        <span>Recurso exclusivo para fundadores</span>
                     </div>
                 </motion.div>
 
@@ -142,7 +128,7 @@ export function BookimPulse() {
                     >
                         <div className="flex items-center space-x-2 mb-6">
                             <Clock className="w-4 h-4 text-gray-500" />
-                            <span className="text-sm text-gray-500 font-medium">Feed de hoje — 23 fev 2026</span>
+                            <span className="text-sm text-gray-500 font-medium">Feed de exemplo — 07:00 da manhã</span>
                         </div>
 
                         {newsItems.map((item, index) => (
@@ -206,7 +192,7 @@ export function BookimPulse() {
 
                                     {/* Data */}
                                     <div className="text-[10px] text-gray-600 uppercase tracking-wider mb-4 font-medium">
-                                        23 fev 2026 • 07:00
+                                        Edição diária • 07:00
                                     </div>
 
                                     {/* Cards de notícia no app */}
@@ -286,22 +272,20 @@ export function BookimPulse() {
                     className="text-center"
                 >
                     <div className="flex flex-col items-center p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/[0.08] w-full sm:w-auto">
-                        <div className="flex items-baseline gap-1 mb-2">
-                            <span className="text-4xl sm:text-5xl font-bold text-white">R$67</span>
-                            <span className="text-gray-500 text-lg">/mês</span>
-                        </div>
-                        <p className="text-gray-500 text-sm mb-6">Inclui todas as funcionalidades Pro + Bookim Pulse</p>
+                        <p className="text-white text-lg sm:text-xl font-bold mb-2 text-center">
+                            Pulse vem incluso no plano de fundador
+                        </p>
+                        <p className="text-gray-500 text-sm mb-6 text-center max-w-md">
+                            Os primeiros 1000 inscritos da lista de espera ganham acesso ao Bookim Pulse no lançamento — sem custo extra.
+                        </p>
                         <a
-                            href="https://pay.hotmart.com/J104595888P?off=cfgh44v8"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            href="/lista-de-espera"
                             className="rainbow-btn"
                         >
                             <span className="rainbow-btn-inner">
-                                Assinar agora e receber amanhã às 7h ⚡
+                                Entrar na lista de espera
                             </span>
                         </a>
-                        <p className="text-gray-600 text-xs mt-4">Cancele quando quiser. Sem compromisso.</p>
                     </div>
                 </motion.div>
             </Container>

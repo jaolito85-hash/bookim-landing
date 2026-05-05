@@ -38,12 +38,10 @@ export function CTA() {
 
                     <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-12 md:mb-16">
                         <a
-                            href="https://pay.hotmart.com/J104595888P?off=cfgh44v8"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            href="/lista-de-espera"
                             className="group inline-flex items-center h-14 sm:h-16 px-8 sm:px-10 text-base sm:text-xl rounded-2xl bg-white text-[#2D4057] font-bold hover:bg-white/90 transition-all duration-200 shadow-[0_0_50px_rgba(255,255,255,0.15)] hover:shadow-[0_0_60px_rgba(255,255,255,0.25)] hover:-translate-y-0.5 btn-glow"
                         >
-                            Assinar agora
+                            Garantir minha vaga
                             <svg
                                 className="ml-2 w-5 h-5 transition-transform duration-200 group-hover:translate-x-1"
                                 fill="none"
@@ -58,7 +56,7 @@ export function CTA() {
 
                     <div className="flex flex-col items-center space-y-2">
                         <div className="text-sm sm:text-base text-gray-400 font-medium text-center">
-                            <span className="text-white font-bold">7 dias</span> para testar — devolve se não gostar
+                            Os primeiros <span className="text-white font-bold">1000</span> viram fundadores · preço congelado para sempre
                         </div>
                     </div>
                 </motion.div>

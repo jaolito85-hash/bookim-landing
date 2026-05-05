@@ -3,11 +3,10 @@
 import { useState } from "react"
 import { Container } from "@/components/layout/Container"
 import { BookimIcon } from "@/components/icons/BookimIcon"
-import { Check, ShieldCheck, CreditCard, Zap } from "lucide-react"
+import { Check, ShieldCheck, Zap } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
-const HOTMART_MENSAL = "https://pay.hotmart.com/J104595888P?off=cfgh44v8"
-const HOTMART_ANUAL = "https://pay.hotmart.com/J104595888P?off=bryfks8g"
+const WAITLIST_URL = "/lista-de-espera"
 
 const features = [
     "Flashcards ilimitados",
@@ -42,14 +41,14 @@ export function Pricing() {
                 >
                     <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#2D4057]/10 text-[#2D4057] text-sm font-semibold tracking-wide mb-6">
                         <Zap className="w-3.5 h-3.5" />
-                        Plano único
+                        Plano de fundador
                     </div>
                     <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 font-outfit text-[var(--bookim-text-primary)]">
-                        Simples. Direto.{" "}
-                        <span className="text-[var(--bookim-primary)]">Completo.</span>
+                        Preço de fundador.{" "}
+                        <span className="text-[var(--bookim-primary)]">Congelado para sempre.</span>
                     </h2>
                     <p className="text-[var(--bookim-text-secondary)] text-lg max-w-xl mx-auto leading-relaxed">
-                        Um plano. Tudo incluso. Sem surpresas, sem limites.
+                        Os primeiros 1000 inscritos da lista de espera congelam o preço — mesmo quando subir no futuro.
                     </p>
                 </motion.div>
 
@@ -127,15 +126,15 @@ export function Pricing() {
                                         </div>
                                         <div>
                                             <div className="font-bold text-xl text-[var(--bookim-text-primary)] font-outfit tracking-tight">
-                                                Bookim Pro
+                                                Bookim Fundador
                                             </div>
                                             <div className="text-sm text-[var(--bookim-text-secondary)]">
-                                                Acesso completo
+                                                Apenas 1000 vagas
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="px-3 py-1.5 rounded-full bg-[#2D4057] text-white text-xs font-bold tracking-widest uppercase">
-                                        Popular
+                                    <div className="px-3 py-1.5 rounded-full bg-emerald-600 text-white text-xs font-bold tracking-widest uppercase">
+                                        Pré-lançamento
                                     </div>
                                 </div>
 
@@ -170,7 +169,7 @@ export function Pricing() {
                                                         <span className="text-emerald-600 text-sm font-bold">equivale a R$49/mês</span>
                                                     </div>
                                                     <p className="text-[var(--bookim-text-muted)] text-sm mt-2">
-                                                        Cobrado anualmente · Cancele a qualquer momento
+                                                        Preço congelado · Apenas para os 1000 fundadores
                                                     </p>
                                                 </>
                                             ) : (
@@ -190,7 +189,7 @@ export function Pricing() {
                                                         </div>
                                                     </div>
                                                     <p className="text-[var(--bookim-text-muted)] text-sm mt-2">
-                                                        Cobrado mensalmente · Cancele a qualquer momento
+                                                        Preço congelado · Apenas para os 1000 fundadores
                                                     </p>
                                                 </>
                                             )}
@@ -224,12 +223,10 @@ export function Pricing() {
 
                                 {/* Botão CTA */}
                                 <a
-                                    href={isAnual ? HOTMART_ANUAL : HOTMART_MENSAL}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                    href={WAITLIST_URL}
                                     className="group/btn flex items-center justify-center w-full h-14 rounded-2xl bg-[#2D4057] hover:bg-[#1e2d3d] text-white font-semibold text-base transition-all duration-200 hover:shadow-[0_12px_40px_rgba(45,64,87,0.45)] hover:-translate-y-0.5 active:translate-y-0 active:shadow-none"
                                 >
-                                    {isAnual ? "Garantir plano anual" : "Assinar agora"}
+                                    Entrar na lista de espera
                                     <svg
                                         className="ml-2 w-4 h-4 transition-transform duration-200 group-hover/btn:translate-x-1"
                                         fill="none"
@@ -245,15 +242,10 @@ export function Pricing() {
                                 <div className="mt-5 flex items-center justify-center gap-5 text-xs text-[var(--bookim-text-muted)]">
                                     <div className="flex items-center gap-1.5">
                                         <ShieldCheck className="w-3.5 h-3.5 text-[var(--bookim-success)]" />
-                                        <span>Pagamento seguro</span>
+                                        <span>Dados protegidos</span>
                                     </div>
                                     <div className="w-px h-3.5 bg-[#E5E5EA]" />
-                                    <div className="flex items-center gap-1.5">
-                                        <CreditCard className="w-3.5 h-3.5 text-[#2D4057]" />
-                                        <span>Via Hotmart</span>
-                                    </div>
-                                    <div className="w-px h-3.5 bg-[#E5E5EA]" />
-                                    <span>Cancele quando quiser</span>
+                                    <span>Os primeiros 1000 viram fundadores</span>
                                 </div>
                             </div>
                         </div>

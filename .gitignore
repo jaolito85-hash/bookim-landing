@@ -40,8 +40,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# app subproject (Vite/React — tem seu próprio repo, ignorado aqui)
-app/
+# bookim-app subproject (Vite/React — tem seu próprio repo, ignorado aqui)
+/bookim-app/
 
 # log files gerados localmente
 build_output.txt

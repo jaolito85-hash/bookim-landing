@@ -162,11 +162,11 @@ export function Comparison() {
                             viewport={{ once: true }}
                             className="relative"
                         >
-                            {/* Floating "Recomendado" badge */}
+                            {/* Floating "Em breve" badge */}
                             <div className="absolute -top-[18px] left-1/2 -translate-x-1/2 z-20">
                                 <span className="inline-flex items-center gap-1.5 bg-[var(--bookim-primary)] text-white text-[10px] font-bold px-4 py-1.5 rounded-full shadow-[0_4px_16px_rgba(45,64,87,0.35)] uppercase tracking-widest">
                                     <Zap className="w-2.5 h-2.5 fill-white stroke-0" />
-                                    Recomendado
+                                    Em breve
                                 </span>
                             </div>
 
@@ -233,15 +233,13 @@ export function Comparison() {
                                         {/* CTA */}
                                         <div className="mt-8 pt-6 border-t border-[var(--bookim-border)]">
                                             <a
-                                                href="https://pay.hotmart.com/J104595888P?off=cfgh44v8"
-                                                target="_blank"
-                                                rel="noopener noreferrer"
+                                                href="/lista-de-espera"
                                                 className="flex items-center justify-center w-full py-3.5 rounded-xl bg-[var(--bookim-primary)] text-white text-sm font-semibold tracking-wide hover:bg-[var(--bookim-primary-light)] transition-all duration-200 shadow-md hover:shadow-[0_8px_24px_rgba(45,64,87,0.3)] hover:-translate-y-0.5 active:translate-y-0"
                                             >
-                                                Assinar agora →
+                                                Entrar na lista de espera →
                                             </a>
                                             <p className="text-center text-[11px] text-[var(--bookim-text-muted)] mt-2.5">
-                                                R$67/mês · Pagamento seguro via Hotmart
+                                                Os primeiros 1000 viram fundadores
                                             </p>
                                         </div>
                                     </div>

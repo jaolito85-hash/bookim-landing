@@ -57,7 +57,7 @@ export function Hero() {
                 >
                     <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-[#2D4057]/8 border border-[#2D4057]/10 text-[var(--bookim-text-secondary)] font-medium text-sm tracking-wide">
                         <Sparkles className="w-4 h-4 text-[var(--bookim-warning)]" />
-                        <span>Para medicina e odontologia</span>
+                        <span>Pré-lançamento · Vagas de fundador abertas</span>
                     </div>
                 </motion.div>
 
@@ -79,7 +79,7 @@ export function Hero() {
                     transition={{ duration: 0.5, delay: 0.3 }}
                     className="text-base sm:text-lg md:text-xl text-[var(--bookim-text-secondary)] max-w-2xl mb-10 leading-relaxed font-medium px-4"
                 >
-                    Por que estudantes da USP, UFRJ e UFMG estão todos usando o mesmo app? O Bookim é o único app com IA especializada para cada curso — um agente treinado para entender as maiores dúvidas e desafios de medicina e odontologia.
+                    Tire foto do quadro, do livro ou do PDF. A IA do Bookim transforma em flashcards organizados por matéria, com repetição espaçada — feita para os cursos de saúde mais densos do país.
                 </motion.p>
 
                 {/* CTAs */}
@@ -90,17 +90,15 @@ export function Hero() {
                     className="flex flex-col items-center space-y-5 mb-14"
                 >
                     <a
-                        href="https://pay.hotmart.com/J104595888P?off=cfgh44v8"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href="/lista-de-espera"
                         className="group rainbow-btn"
                     >
                         <span className="rainbow-btn-inner">
-                            Assinar agora
+                            Entrar na lista de espera
                         </span>
                     </a>
                     <p className="text-xs text-[var(--bookim-text-muted)]">
-                        R$67/mês · menos que R$2,30 por dia · Cancele quando quiser
+                        Os primeiros 1000 viram fundadores
                     </p>
                     <a
                         href="#how-it-works"
