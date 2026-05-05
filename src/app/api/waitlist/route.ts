@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
-import { supabasePublic } from "@/lib/supabase-public"
+import { getSupabasePublic } from "@/lib/supabase-public"
 import { sendWaitlistConfirmationEmail } from "@/lib/email"
 
 function normalizeWhatsApp(raw: string): string | null {
@@ -45,7 +45,8 @@ export async function POST(request: NextRequest) {
 
     const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown"
 
-    const { data, error } = await supabasePublic.rpc("insert_waitlist_lead", {
+    const supabase = getSupabasePublic()
+    const { data, error } = await supabase.rpc("insert_waitlist_lead", {
       p_nome: nome.trim(),
       p_email: email.trim().toLowerCase(),
       p_whatsapp: normalizedWhatsApp,
@@ -75,7 +76,7 @@ export async function POST(request: NextRequest) {
       })
     }
 
-    const { data: countData } = await supabasePublic.rpc("get_waitlist_count")
+    const { data: countData } = await supabase.rpc("get_waitlist_count")
     const totalCount = countData ?? 0
 
     try {
@@ -101,7 +102,7 @@ export async function POST(request: NextRequest) {
 
 export async function GET() {
   try {
-    const { data } = await supabasePublic.rpc("get_waitlist_count")
+    const { data } = await getSupabasePublic().rpc("get_waitlist_count")
     const count = data ?? 0
 
     return NextResponse.json(

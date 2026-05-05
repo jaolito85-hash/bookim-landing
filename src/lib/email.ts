@@ -1,6 +1,14 @@
 import { Resend } from "resend"
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Lazy: only instantiate when actually sending an email so the module
+// can be imported (e.g. during build) without a RESEND_API_KEY.
+function getResend(): Resend {
+  const key = process.env.RESEND_API_KEY
+  if (!key) {
+    throw new Error("RESEND_API_KEY não configurada")
+  }
+  return new Resend(key)
+}
 
 const FROM_EMAIL = "Bookim <nao-responda@bookim.com.br>"
 
@@ -12,7 +20,7 @@ export async function sendWelcomeEmail(params: {
 }) {
   const planLabel = params.planType === "monthly" ? "Mensal" : "Anual"
 
-  const { data, error } = await resend.emails.send({
+  const { data, error } = await getResend().emails.send({
     from: FROM_EMAIL,
     to: params.to,
     subject: "Bem-vindo ao Bookim! Seus dados de acesso",
@@ -57,7 +65,7 @@ export async function sendSubscriptionCancelledEmail(params: {
   to: string
   name: string
 }) {
-  const { data, error } = await resend.emails.send({
+  const { data, error } = await getResend().emails.send({
     from: FROM_EMAIL,
     to: params.to,
     subject: "Sua assinatura do Bookim foi cancelada",
@@ -100,7 +108,7 @@ export async function sendWaitlistConfirmationEmail(params: {
     "Acabei de entrar na lista de espera do Bookim, um app de estudos com IA pra medicina e odonto! Entra também: https://bookim.com.br/lista-de-espera?utm_source=whatsapp&utm_medium=referral&utm_campaign=waitlist-share"
   )
 
-  const { data, error } = await resend.emails.send({
+  const { data, error } = await getResend().emails.send({
     from: FROM_EMAIL,
     to: params.to,
     subject: "Bookim: Você está na lista!",
