@@ -85,8 +85,13 @@ export async function POST(request: NextRequest) {
         name: nome.trim(),
         position,
       })
-    } catch {
-      // Don't fail the signup if email fails
+    } catch (emailErr) {
+      // Don't fail the signup if email fails — but log so we can diagnose
+      console.error("[waitlist POST] email send failed:", {
+        to: email.trim().toLowerCase(),
+        position,
+        error: emailErr instanceof Error ? emailErr.message : String(emailErr),
+      })
     }
 
     return NextResponse.json({

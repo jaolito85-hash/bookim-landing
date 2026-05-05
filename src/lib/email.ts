@@ -108,10 +108,43 @@ export async function sendWaitlistConfirmationEmail(params: {
     "Acabei de entrar na lista de espera do Bookim, um app de estudos com IA pra medicina e odonto! Entra também: https://www.bookim.com.br/lista-de-espera?utm_source=whatsapp&utm_medium=referral&utm_campaign=waitlist-share"
   )
 
+  const unsubscribeUrl = `https://www.bookim.com.br/lista-de-espera?unsubscribe=${encodeURIComponent(params.to)}`
+  const founderText = isFounder
+    ? "\n\n>> Vaga de fundador garantida — preço congelado para sempre!\n"
+    : ""
+
+  const plainText = `Olá, ${params.name}!
+
+Sua inscrição na lista de espera do Bookim foi confirmada.
+
+Sua posição: #${params.position}${founderText}
+
+Vamos te avisar assim que o Bookim estiver pronto para você. Enquanto isso, se quiser compartilhar com seus colegas de turma, acesse:
+https://www.bookim.com.br/lista-de-espera
+
+---
+Você recebeu este email porque se inscreveu na lista de espera do Bookim em www.bookim.com.br.
+Seus dados estão protegidos conforme a LGPD.
+Para remover seus dados, responda este email ou escreva para contato@bookim.com.br.
+
+Bookim — Estudo com IA para medicina e odontologia
+www.bookim.com.br`
+
   const { data, error } = await getResend().emails.send({
     from: FROM_EMAIL,
     to: params.to,
-    subject: "Bookim: Você está na lista!",
+    replyTo: "contato@bookim.com.br",
+    subject: `Sua inscrição no Bookim foi confirmada — posição #${params.position}`,
+    text: plainText,
+    headers: {
+      "List-Unsubscribe": `<${unsubscribeUrl}>, <mailto:contato@bookim.com.br?subject=unsubscribe>`,
+      "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+      "X-Entity-Ref-ID": `waitlist-${params.position}`,
+    },
+    tags: [
+      { name: "category", value: "waitlist-confirmation" },
+      { name: "is_founder", value: isFounder ? "yes" : "no" },
+    ],
     html: `
       <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 520px; margin: 0 auto; padding: 32px 24px; color: #1D1D1F;">
         <div style="text-align: center; margin-bottom: 32px;">
@@ -138,10 +171,13 @@ export async function sendWaitlistConfirmationEmail(params: {
         </div>
 
         <hr style="border: none; border-top: 1px solid #E5E5EA; margin: 32px 0 16px;" />
-        <p style="font-size: 11px; color: #A1A1A6; text-align: center; margin: 0; line-height: 1.5;">
-          Você recebeu este email porque se inscreveu na lista de espera do Bookim.
+        <p style="font-size: 11px; color: #A1A1A6; text-align: center; margin: 0 0 8px; line-height: 1.5;">
+          Você recebeu este email porque se inscreveu na lista de espera do Bookim em
+          <a href="https://www.bookim.com.br" style="color: #A1A1A6;">www.bookim.com.br</a>.
           Seus dados estão protegidos conforme a LGPD.
-          Para remover seus dados, envie um email para contato@bookim.com.br.
+        </p>
+        <p style="font-size: 11px; color: #A1A1A6; text-align: center; margin: 0; line-height: 1.5;">
+          Não quer mais receber? <a href="${unsubscribeUrl}" style="color: #A1A1A6;">Cancelar inscrição</a> ou responda este email com "remover".
         </p>
       </div>
     `,
