@@ -1,85 +1,22 @@
 "use client"
 
-import { useEffect, useState, useCallback } from "react"
+import { useState } from "react"
 import { useRouter } from "next/navigation"
 import {
   Users, TrendingUp, Crown, Calendar, RefreshCw, Download, LogOut,
   Stethoscope, Heart, Sparkles, Loader2, Filter,
 } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
-
-type Stats = {
-  total: number
-  founders_count: number
-  founders_remaining: number
-  today_count: number
-  last_7_days_count: number
-  medicina_count: number
-  odontologia_count: number
-  outro_count: number
-}
-type DailyPoint = { dia: string; total: number }
-type SourcePoint = { source: string; total: number }
-type Lead = {
-  lead_position: number
-  nome: string
-  email: string
-  whatsapp: string
-  area_de_estudo: string
-  utm_source: string | null
-  utm_campaign: string | null
-  created_at: string
-}
-
-const REFRESH_INTERVAL_MS = 30_000
+import { useAdminData, type Stats, type DailyPoint, type SourcePoint, type Lead } from "@/hooks/useAdminData"
 
 export function AdminDashboard() {
   const router = useRouter()
-  const [loading, setLoading] = useState(true)
-  const [refreshing, setRefreshing] = useState(false)
-  const [stats, setStats] = useState<Stats | null>(null)
-  const [daily, setDaily] = useState<DailyPoint[]>([])
-  const [sources, setSources] = useState<SourcePoint[]>([])
-  const [leads, setLeads] = useState<Lead[]>([])
   const [filterArea, setFilterArea] = useState<string>("")
   const [filterSource, setFilterSource] = useState<string>("")
-  const [lastUpdated, setLastUpdated] = useState<Date | null>(null)
-
-  const fetchData = useCallback(async (silent = false) => {
-    if (!silent) setLoading(true)
-    else setRefreshing(true)
-
-    try {
-      const params = new URLSearchParams({ limit: "100", days: "14" })
-      if (filterArea) params.set("area", filterArea)
-      if (filterSource) params.set("source", filterSource)
-
-      const res = await fetch(`/api/admin/data?${params.toString()}`, {
-        cache: "no-store",
-      })
-      if (res.status === 401) {
-        router.replace("/admin/login")
-        return
-      }
-      const data = await res.json()
-      setStats(data.stats)
-      setDaily(data.daily || [])
-      setSources(data.sources || [])
-      setLeads(data.leads || [])
-      setLastUpdated(new Date())
-    } catch (err) {
-      console.error("Failed to fetch admin data:", err)
-    } finally {
-      setLoading(false)
-      setRefreshing(false)
-    }
-  }, [filterArea, filterSource, router])
-
-  useEffect(() => {
-    fetchData()
-    const id = setInterval(() => fetchData(true), REFRESH_INTERVAL_MS)
-    return () => clearInterval(id)
-  }, [fetchData])
+  const { state, refetch } = useAdminData(filterArea, filterSource)
+  const { status, data, errorMessage } = state
+  const { stats, daily, sources, leads, lastUpdated } = data
+  const refreshing = status === "refreshing"
 
   const handleLogout = async () => {
     await fetch("/api/admin/login", { method: "DELETE" })
@@ -90,7 +27,7 @@ export function AdminDashboard() {
     window.location.href = "/api/admin/export-csv"
   }
 
-  if (loading) {
+  if (status === "loading") {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[var(--bookim-bg-primary)]">
         <Loader2 className="w-8 h-8 animate-spin text-[var(--bookim-primary)]" />
@@ -108,14 +45,16 @@ export function AdminDashboard() {
               Bookim Admin
             </h1>
             <p className="text-xs text-[var(--bookim-text-muted)] mt-0.5">
-              {lastUpdated && (
+              {status === "error" && errorMessage ? (
+                <span className="text-red-500">Falha ao atualizar: {errorMessage}</span>
+              ) : lastUpdated ? (
                 <>Atualizado às {lastUpdated.toLocaleTimeString("pt-BR")} · auto-refresh 30s</>
-              )}
+              ) : null}
             </p>
           </div>
           <div className="flex items-center gap-2">
             <button
-              onClick={() => fetchData()}
+              onClick={() => refetch()}
               disabled={refreshing}
               className="h-9 px-3 rounded-lg bg-white border border-[var(--bookim-border)] text-[var(--bookim-text-secondary)] hover:bg-gray-50 transition-all flex items-center gap-2 text-sm font-medium disabled:opacity-50"
             >

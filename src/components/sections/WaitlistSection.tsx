@@ -1,6 +1,6 @@
 "use client"
 
-import { Suspense } from "react"
+import { Suspense, useCallback, useEffect, useState } from "react"
 import { Container } from "@/components/layout/Container"
 import { WaitlistForm } from "./WaitlistForm"
 import { WaitlistCounter } from "@/components/ui/WaitlistCounter"
@@ -8,6 +8,25 @@ import { motion } from "framer-motion"
 import { Bell } from "lucide-react"
 
 export function WaitlistSection() {
+  const [count, setCount] = useState<number | null>(null)
+
+  useEffect(() => {
+    let cancelled = false
+    fetch("/api/waitlist")
+      .then((res) => res.json())
+      .then((data) => {
+        if (!cancelled) setCount(data.count)
+      })
+      .catch(() => {})
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
+  const handleSuccess = useCallback((totalCount: number) => {
+    setCount(totalCount)
+  }, [])
+
   return (
     <section id="waitlist" className="relative py-24 md:py-32 overflow-hidden">
       {/* Ambient glow */}
@@ -34,7 +53,7 @@ export function WaitlistSection() {
           <p className="text-[var(--bookim-text-secondary)] text-lg max-w-xl mx-auto leading-relaxed mb-6">
             O Bookim está em fase final de desenvolvimento. Entre na lista e seja avisado no lançamento — com preço especial de fundador.
           </p>
-          <WaitlistCounter />
+          <WaitlistCounter count={count} />
         </motion.div>
 
         <motion.div
@@ -48,7 +67,7 @@ export function WaitlistSection() {
             <div className="absolute -inset-2 rounded-[2rem] bg-gradient-to-br from-[#2D4057]/15 via-transparent to-[#2D4057]/15 blur-2xl opacity-50" />
             <div className="relative bg-white rounded-[1.75rem] p-8 md:p-10 shadow-[0_20px_60px_-15px_rgba(45,64,87,0.15),0_0_0_1px_rgba(45,64,87,0.06)]">
               <Suspense fallback={null}>
-                <WaitlistForm />
+                <WaitlistForm onSuccess={handleSuccess} />
               </Suspense>
             </div>
           </div>

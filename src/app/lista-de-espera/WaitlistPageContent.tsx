@@ -1,5 +1,6 @@
 "use client"
 
+import { useCallback, useEffect, useState } from "react"
 import { Navbar } from "@/components/layout/Navbar"
 import { Footer } from "@/components/layout/Footer"
 import { Container } from "@/components/layout/Container"
@@ -10,6 +11,25 @@ import { motion } from "framer-motion"
 import { ShieldCheck, BellOff, Clock } from "lucide-react"
 
 export function WaitlistPageContent() {
+  const [count, setCount] = useState<number | null>(null)
+
+  useEffect(() => {
+    let cancelled = false
+    fetch("/api/waitlist")
+      .then((res) => res.json())
+      .then((data) => {
+        if (!cancelled) setCount(data.count)
+      })
+      .catch(() => {})
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
+  const handleSuccess = useCallback((totalCount: number) => {
+    setCount(totalCount)
+  }, [])
+
   return (
     <main className="min-h-screen bg-[var(--bookim-bg-primary)] text-[var(--bookim-text-primary)] selection:bg-[#6C5CE7] selection:text-white">
       <Navbar />
@@ -64,7 +84,7 @@ export function WaitlistPageContent() {
             transition={{ delay: 0.35 }}
             className="mb-8"
           >
-            <WaitlistCounter />
+            <WaitlistCounter count={count} />
           </motion.div>
 
           {/* Form card */}
@@ -77,7 +97,7 @@ export function WaitlistPageContent() {
             <div className="relative">
               <div className="absolute -inset-2 rounded-[2rem] bg-gradient-to-br from-[#2D4057]/15 via-transparent to-[#2D4057]/15 blur-2xl opacity-50" />
               <div className="relative bg-white rounded-[1.75rem] p-8 md:p-10 shadow-[0_20px_60px_-15px_rgba(45,64,87,0.15),0_0_0_1px_rgba(45,64,87,0.06)]">
-                <WaitlistForm />
+                <WaitlistForm onSuccess={handleSuccess} />
               </div>
             </div>
           </motion.div>

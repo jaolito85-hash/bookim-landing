@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { Check, Copy, Share2 } from "lucide-react"
 
@@ -20,11 +20,16 @@ export function WaitlistSuccess({ position, totalCount, nome }: WaitlistSuccessP
   const whatsappLink = `https://wa.me/?text=${shareText}`
   const waitlistLink = "https://www.bookim.com.br/lista-de-espera?utm_source=referral&utm_medium=copy-link&utm_campaign=waitlist-share"
 
-  const handleCopy = async () => {
+  const handleCopy = useCallback(async () => {
     await navigator.clipboard.writeText(waitlistLink)
     setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
-  }
+  }, [waitlistLink])
+
+  useEffect(() => {
+    if (!copied) return
+    const id = setTimeout(() => setCopied(false), 2000)
+    return () => clearTimeout(id)
+  }, [copied])
 
   return (
     <motion.div

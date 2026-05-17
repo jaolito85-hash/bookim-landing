@@ -19,14 +19,20 @@ function formatPhone(value: string): string {
   return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`
 }
 
-type FormState = "idle" | "submitting" | "success" | "duplicate" | "error"
+type FormState =
+  | { kind: "idle" }
+  | { kind: "submitting" }
+  | { kind: "duplicate" }
+  | { kind: "error"; message: string }
+  | { kind: "success"; position: number; totalCount: number }
 
-export function WaitlistForm() {
+interface WaitlistFormProps {
+  onSuccess?: (totalCount: number) => void
+}
+
+export function WaitlistForm({ onSuccess }: WaitlistFormProps = {}) {
   const searchParams = useSearchParams()
-  const [state, setState] = useState<FormState>("idle")
-  const [errorMsg, setErrorMsg] = useState("")
-  const [position, setPosition] = useState(0)
-  const [totalCount, setTotalCount] = useState(0)
+  const [formState, setFormState] = useState<FormState>({ kind: "idle" })
 
   const [nome, setNome] = useState("")
   const [email, setEmail] = useState("")
@@ -39,8 +45,7 @@ export function WaitlistForm() {
       e.preventDefault()
       if (!nome || !email || !whatsapp || !area || !lgpd) return
 
-      setState("submitting")
-      setErrorMsg("")
+      setFormState({ kind: "submitting" })
 
       try {
         const res = await fetch("/api/waitlist", {
@@ -62,32 +67,42 @@ export function WaitlistForm() {
         const data = await res.json()
 
         if (!res.ok) {
-          setErrorMsg(data.message || "Erro ao se inscrever. Tente novamente.")
-          setState("error")
+          setFormState({
+            kind: "error",
+            message: data.message || "Erro ao se inscrever. Tente novamente.",
+          })
           return
         }
 
         if (data.duplicate) {
-          setState("duplicate")
+          setFormState({ kind: "duplicate" })
           return
         }
 
-        setPosition(data.position)
-        setTotalCount(data.totalCount)
-        setState("success")
+        setFormState({
+          kind: "success",
+          position: data.position,
+          totalCount: data.totalCount,
+        })
+        onSuccess?.(data.totalCount)
       } catch {
-        setErrorMsg("Erro de conexão. Tente novamente.")
-        setState("error")
+        setFormState({ kind: "error", message: "Erro de conexão. Tente novamente." })
       }
     },
-    [nome, email, whatsapp, area, lgpd, searchParams]
+    [nome, email, whatsapp, area, lgpd, searchParams, onSuccess]
   )
 
-  if (state === "success") {
-    return <WaitlistSuccess position={position} totalCount={totalCount} nome={nome} />
+  if (formState.kind === "success") {
+    return (
+      <WaitlistSuccess
+        position={formState.position}
+        totalCount={formState.totalCount}
+        nome={nome}
+      />
+    )
   }
 
-  if (state === "duplicate") {
+  if (formState.kind === "duplicate") {
     return (
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
@@ -185,17 +200,17 @@ export function WaitlistForm() {
         </span>
       </label>
 
-      {(state === "error") && (
-        <p className="text-sm text-red-500 text-center">{errorMsg}</p>
+      {formState.kind === "error" && (
+        <p className="text-sm text-red-500 text-center">{formState.message}</p>
       )}
 
       <button
         type="submit"
-        disabled={state === "submitting"}
+        disabled={formState.kind === "submitting"}
         className="group rainbow-btn w-full"
       >
         <span className="rainbow-btn-inner flex items-center justify-center gap-2">
-          {state === "submitting" ? (
+          {formState.kind === "submitting" ? (
             <>
               <Loader2 className="w-4 h-4 animate-spin" />
               Inscrevendo...

@@ -1,18 +1,13 @@
 "use client"
 
-import { useEffect, useState } from "react"
 import { Users } from "lucide-react"
 
-export function WaitlistCounter({ className = "" }: { className?: string }) {
-  const [count, setCount] = useState<number | null>(null)
+interface WaitlistCounterProps {
+  count: number | null
+  className?: string
+}
 
-  useEffect(() => {
-    fetch("/api/waitlist")
-      .then((res) => res.json())
-      .then((data) => setCount(data.count))
-      .catch(() => {})
-  }, [])
-
+export function WaitlistCounter({ count, className = "" }: WaitlistCounterProps) {
   if (count === null || count === 0) return null
 
   return (

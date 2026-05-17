@@ -4,18 +4,21 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { Loader2, Lock } from "lucide-react"
 
+type LoginState =
+  | { kind: "idle" }
+  | { kind: "submitting" }
+  | { kind: "error"; message: string }
+
 export function LoginForm() {
   const router = useRouter()
   const [password, setPassword] = useState("")
-  const [submitting, setSubmitting] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+  const [login, setLogin] = useState<LoginState>({ kind: "idle" })
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!password) return
 
-    setSubmitting(true)
-    setError(null)
+    setLogin({ kind: "submitting" })
 
     try {
       const res = await fetch("/api/admin/login", {
@@ -25,15 +28,13 @@ export function LoginForm() {
       })
       const data = await res.json()
       if (!data.success) {
-        setError(data.message || "Senha incorreta.")
-        setSubmitting(false)
+        setLogin({ kind: "error", message: data.message || "Senha incorreta." })
         return
       }
       router.replace("/admin")
       router.refresh()
     } catch {
-      setError("Erro ao conectar. Tente novamente.")
-      setSubmitting(false)
+      setLogin({ kind: "error", message: "Erro ao conectar. Tente novamente." })
     }
   }
 
@@ -53,16 +54,16 @@ export function LoginForm() {
         />
       </div>
 
-      {error && (
-        <p className="text-sm text-red-500 text-center">{error}</p>
+      {login.kind === "error" && (
+        <p className="text-sm text-red-500 text-center">{login.message}</p>
       )}
 
       <button
         type="submit"
-        disabled={submitting || !password}
+        disabled={login.kind === "submitting" || !password}
         className="w-full h-12 rounded-xl bg-[#2D4057] text-white font-semibold text-sm hover:bg-[#1e2d3d] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
       >
-        {submitting ? (
+        {login.kind === "submitting" ? (
           <>
             <Loader2 className="w-4 h-4 animate-spin" />
             Entrando...
