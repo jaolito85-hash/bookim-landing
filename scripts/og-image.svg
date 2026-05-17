@@ -1,0 +1,77 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A1F2E"/>
+      <stop offset="100%" stop-color="#0F1320"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6C5CE7"/>
+      <stop offset="100%" stop-color="#00D2D3"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="85%" cy="15%" r="50%">
+      <stop offset="0%" stop-color="#6C5CE7" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#6C5CE7" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="10%" cy="90%" r="40%">
+      <stop offset="0%" stop-color="#00D2D3" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#00D2D3" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+
+  <!-- Subtle grid pattern -->
+  <g opacity="0.05" stroke="#FFFFFF" stroke-width="1">
+    <line x1="0" y1="157" x2="1200" y2="157"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="472" x2="1200" y2="472"/>
+    <line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="900" y1="0" x2="900" y2="630"/>
+  </g>
+
+  <!-- Logo (top-left) -->
+  <g transform="translate(80, 80)">
+    <rect width="84" height="84" rx="18" fill="#2D4057"/>
+    <rect x="10" y="10" width="64" height="64" rx="14" fill="#F5F7FA"/>
+    <circle cx="30" cy="38" r="9.5" stroke="#2D4057" stroke-width="2.6" fill="none"/>
+    <circle cx="54" cy="38" r="9.5" stroke="#2D4057" stroke-width="2.6" fill="none"/>
+    <path d="M 39.5 38 Q 42 35 44.5 38" stroke="#2D4057" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+    <circle cx="30" cy="38" r="2.6" fill="#2D4057"/>
+    <circle cx="54" cy="38" r="2.6" fill="#2D4057"/>
+    <path d="M 34 52 Q 42 58 50 52" stroke="#2D4057" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Bookim wordmark -->
+  <text x="184" y="138" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="42" font-weight="700" fill="#FFFFFF" letter-spacing="-1">Bookim</text>
+
+  <!-- Headline -->
+  <text x="80" y="290" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="68" font-weight="800" fill="#FFFFFF" letter-spacing="-2.5">Você estuda.</text>
+  <text x="80" y="370" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="68" font-weight="800" fill="#FFFFFF" letter-spacing="-2.5">A IA organiza, revisa</text>
+  <text x="80" y="450" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="68" font-weight="800" fill="#FFFFFF" letter-spacing="-2.5">e otimiza.</text>
+
+  <!-- Accent line -->
+  <rect x="80" y="478" width="120" height="5" rx="2.5" fill="url(#accent)"/>
+
+  <!-- Subtitle -->
+  <text x="80" y="525" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="28" font-weight="500" fill="#B8BFD0" letter-spacing="-0.3">Seu copiloto de estudos para medicina e odontologia.</text>
+
+  <!-- URL -->
+  <text x="80" y="585" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="22" font-weight="600" fill="#00D2D3" letter-spacing="0.5">bookim.com.br</text>
+
+  <!-- Decorative dot pattern (right side) -->
+  <g fill="#FFFFFF" opacity="0.08">
+    <circle cx="1080" cy="200" r="4"/>
+    <circle cx="1110" cy="200" r="4"/>
+    <circle cx="1140" cy="200" r="4"/>
+    <circle cx="1080" cy="230" r="4"/>
+    <circle cx="1110" cy="230" r="4"/>
+    <circle cx="1140" cy="230" r="4"/>
+    <circle cx="1080" cy="260" r="4"/>
+    <circle cx="1110" cy="260" r="4"/>
+    <circle cx="1140" cy="260" r="4"/>
+  </g>
+</svg>
