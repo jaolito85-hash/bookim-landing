@@ -3,7 +3,6 @@
 import * as React from "react"
 import Link from "next/link"
 import { BookimLogoFull } from "@/components/icons/BookimLogoFull"
-import { Button } from "@/components/ui/Button"
 import { Container } from "@/components/layout/Container"
 import { Menu, X, Zap } from "lucide-react"
 import { AnimatePresence, motion } from "framer-motion"
@@ -57,8 +56,7 @@ export function Navbar() {
                 </nav>
 
                 {/* Desktop CTA */}
-                <div className="hidden md:flex items-center space-x-4">
-                    <Button variant="ghost" size="sm">Entrar</Button>
+                <div className="hidden md:flex items-center">
                     <a
                         href="/lista-de-espera"
                         className="inline-flex items-center h-9 px-5 text-sm rounded-full bg-[#2D4057] text-white font-semibold hover:bg-[#1e2d3d] transition-all duration-200 hover:shadow-[0_4px_16px_rgba(45,64,87,0.35)] hover:-translate-y-0.5 active:translate-y-0"
@@ -105,8 +103,7 @@ export function Navbar() {
                                     </Link>
                                 </motion.div>
                             ))}
-                            <div className="pt-4 mt-2 border-t border-[var(--bookim-border)] flex flex-col space-y-3">
-                                <Button variant="ghost" className="w-full justify-center">Entrar</Button>
+                            <div className="pt-4 mt-2 border-t border-[var(--bookim-border)]">
                                 <a
                                     href="/lista-de-espera"
                                     onClick={() => setMobileMenuOpen(false)}
