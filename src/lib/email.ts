@@ -124,7 +124,7 @@ https://www.bookim.com.br/lista-de-espera
 
 ---
 Você recebeu este email porque se inscreveu na lista de espera do Bookim em www.bookim.com.br.
-Seus dados estão protegidos conforme a LGPD.
+Seus dados estão protegidos conforme a LGPD. Política de Privacidade: https://www.bookim.com.br/privacidade
 Para remover seus dados, responda este email ou escreva para contato@bookim.com.br.
 
 Bookim — Estudo com IA para medicina e odontologia
@@ -188,7 +188,9 @@ www.bookim.com.br`
         <p style="font-size: 11px; color: #A1A1A6; text-align: center; margin: 0 0 8px; line-height: 1.5;">
           Você recebeu este email porque se inscreveu na lista de espera do Bookim em
           <a href="https://www.bookim.com.br" style="color: #A1A1A6;">www.bookim.com.br</a>.
-          Seus dados estão protegidos conforme a LGPD.
+          Seus dados estão protegidos conforme a
+          <a href="https://www.bookim.com.br/privacidade" style="color: #A1A1A6; text-decoration: underline;">Política de Privacidade</a>
+          (LGPD).
         </p>
         <p style="font-size: 11px; color: #A1A1A6; text-align: center; margin: 0; line-height: 1.5;">
           Não quer mais receber? <a href="${unsubscribeUrl}" style="color: #A1A1A6;">Cancelar inscrição</a> ou responda este email com "remover".

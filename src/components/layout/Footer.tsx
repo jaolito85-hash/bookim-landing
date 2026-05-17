@@ -51,8 +51,8 @@ export function Footer() {
                     <div className="flex flex-col space-y-3">
                         <h4 className="font-bold text-white mb-1">Legal</h4>
                         <Link href="#" className="text-sm text-gray-400 hover:text-white transition-colors">Termos de Uso</Link>
-                        <Link href="#" className="text-sm text-gray-400 hover:text-white transition-colors">Privacidade</Link>
-                        <Link href="#" className="text-sm text-gray-400 hover:text-white transition-colors">Cookies</Link>
+                        <Link href="/privacidade" className="text-sm text-gray-400 hover:text-white transition-colors">Privacidade</Link>
+                        <Link href="/privacidade#cookies" className="text-sm text-gray-400 hover:text-white transition-colors">Cookies</Link>
                     </div>
                 </div>
 
